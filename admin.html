@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Painel local de administração do catálogo 3D MAIA.">
+  <title>Painel admin — 3D MAIA</title>
+  <link rel="icon" href="assets/logo-3d-maia-original.png">
+  <link rel="stylesheet" href="admin.css?v=28">
+</head>
+<body class="admin-locked">
+  <main class="login-gate" id="loginGate">
+    <form class="login-card" id="loginForm">
+      <span class="login-mark" aria-hidden="true">3D</span>
+      <p class="eyebrow">Área restrita</p>
+      <h1>Painel 3D MAIA</h1>
+      <p>Entre com seu usuário e senha para gerenciar produtos, imagens e preços.</p>
+      <label>E-mail<input name="email" type="email" autocomplete="username" placeholder="seuemail@exemplo.com" required></label>
+      <label>Senha<input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="primary-button" type="submit">Entrar no painel</button>
+      <p class="login-message" id="loginMessage" role="alert"></p>
+      <a href="index.html">← Voltar ao catálogo</a>
+    </form>
+  </main>
+
+  <div id="adminApp" hidden>
+  <header class="admin-header">
+    <a class="brand" href="index.html">
+      <span class="brand-rule" aria-hidden="true"></span>
+      <span class="brand-wordmark"><strong><b>3D</b> MAIA</strong><small>Painel administrativo</small></span>
+    </a>
+    <div class="admin-header-actions"><a class="catalog-link" href="index.html" target="_blank" rel="noopener">Ver catálogo ↗</a><button class="logout-button" id="logoutButton" type="button">Sair</button></div>
+  </header>
+
+  <main class="admin-shell">
+    <div class="admin-watermark" aria-hidden="true"></div>
+
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">Painel administrativo</p>
+        <h1>Catálogo</h1>
+        <p class="intro-text">Organize produtos, fotos, categorias e preços sem mexer no código.</p>
+        <p class="sync-status" id="cloudSyncStatus"><span></span> Conectado ao catálogo online.</p>
+      </div>
+      <div class="page-actions"><button class="secondary-button" id="openSettings" type="button">⚙ Configurações do site</button><button class="primary-button" id="newProduct" type="button"><span>＋</span> Adicionar produto</button></div>
+    </section>
+
+    <section class="status-grid" aria-label="Resumo do catálogo">
+      <article><span>Produtos</span><strong id="productTotal">0</strong></article>
+      <article><span>Com preço</span><strong id="pricedTotal">0</strong></article>
+      <article><span>Categorias</span><strong id="categoryTotal">0</strong></article>
+    </section>
+
+    <p class="panel-message" id="panelMessage" role="status"></p>
+
+    <section class="inventory">
+      <div class="inventory-header">
+        <div><p class="eyebrow">Produtos cadastrados</p><h2>Itens do catálogo <small id="visibleCount"></small></h2></div>
+        <div class="inventory-controls">
+          <label class="search-box"><span>Buscar produto</span><input id="productSearch" type="search" placeholder="Digite o nome, material ou categoria..."></label>
+          <label><span>Categoria</span><select id="productCategoryFilter"><option value="todos">Todas</option></select></label>
+          <label><span>Mídia</span><select id="productMediaFilter"><option value="todos">Todos</option><option value="fotos">Com fotos</option><option value="sem-fotos">Sem fotos</option></select></label>
+        </div>
+      </div>
+      <div class="product-list" id="adminProductList"></div>
+    </section>
+
+    <details class="category-manager">
+      <summary><span><b>Gerenciar categorias</b><small>Criar, renomear ou excluir filtros do catálogo</small></span><strong>Abrir</strong></summary>
+      <div class="category-manager-content">
+        <div class="category-manager-heading">
+          <div><p class="eyebrow">Organização</p><h2 id="categoryManagerTitle">Categorias do catálogo</h2><p>Crie e renomeie os filtros que aparecem para seus clientes.</p></div>
+          <form class="category-create" id="categoryCreateForm"><label>Nova categoria<input name="categoryName" type="text" placeholder="Ex.: Lembrancinhas" required></label><button class="primary-button" type="submit">Adicionar</button></form>
+        </div>
+        <div class="category-list" id="categoryList"></div>
+        <p class="category-message" id="categoryMessage" role="status"></p>
+      </div>
+    </details>
+
+    <details class="data-tools">
+      <summary>Backup e restauração <span>abrir</span></summary>
+      <div class="tools-content">
+        <p>Exporte um arquivo de segurança quando quiser. As alterações principais também ficam salvas no banco online.</p>
+        <div class="tool-actions">
+          <button class="secondary-button" id="exportData" type="button">Exportar backup</button>
+          <label class="secondary-button file-button">Importar backup<input id="importData" type="file" accept="application/json,.json"></label>
+          <button class="danger-button" id="resetData" type="button">Restaurar demonstração</button>
+        </div>
+        <p class="tool-message" id="toolMessage" role="status"></p>
+      </div>
+    </details>
+  </main>
+
+  <dialog class="site-settings-dialog" id="siteSettingsDialog">
+    <form class="settings-form" id="siteSettingsForm">
+      <div class="dialog-heading"><div><p class="eyebrow">Identidade e contato</p><h2>Configurações do site</h2><small>Altere a aparência e o WhatsApp sem mexer no código.</small></div><button class="close-button" id="closeSettings" type="button" aria-label="Fechar configurações">×</button></div>
+      <div class="settings-preview">
+        <div class="settings-banner-preview" id="settingsBannerPreview"><img data-site-logo id="settingsLogoPreview" src="assets/logo-3d-maia-original.png" alt="Prévia da logo"></div>
+        <p>Pré-visualização da marca e do banner principal.</p>
+      </div>
+      <div class="settings-fields">
+        <div class="section-title"><span>01</span><div><strong>Marca e cores</strong><small>Personalize a identidade visual do site</small></div></div>
+        <div class="settings-color-grid"><label>Cor principal<input name="primaryColor" type="color" value="#df6b3f"></label><label>Cor secundária<input name="secondaryColor" type="color" value="#705d7d"></label></div>
+        <label class="settings-upload">Trocar logo<input id="settingsLogoFile" type="file" accept="image/jpeg,image/png,image/webp"></label>
+        <label class="settings-upload">Imagem de fundo do banner<input id="settingsBannerFile" type="file" accept="image/jpeg,image/png,image/webp"></label>
+        <button class="clear-banner" id="clearBanner" type="button">Remover imagem de fundo</button>
+        <div class="section-title settings-contact-title"><span>02</span><div><strong>Contato</strong><small>Número que receberá os pedidos</small></div></div>
+        <label class="settings-phone">WhatsApp<input name="whatsapp" type="tel" placeholder="+55 69 9276-1192" required><small>Use DDD e número. O código +55 é acrescentado automaticamente quando necessário.</small></label>
+        <input name="logoData" type="hidden"><input name="bannerData" type="hidden">
+      </div>
+      <div class="dialog-actions settings-actions"><button class="danger-button" id="resetSettings" type="button">Restaurar padrão</button><span></span><button class="secondary-button" id="cancelSettings" type="button">Cancelar</button><button class="primary-button" type="submit">Salvar configurações</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="product-dialog" id="productDialog">
+    <form class="product-form" id="productForm">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">Estúdio de produto</p><h2 id="formTitle">Novo produto</h2><small>Informações e mídia organizadas em um só lugar.</small></div>
+        <button class="close-button" id="closeForm" type="button" aria-label="Fechar">×</button>
+      </div>
+      <section class="details-panel">
+        <div class="section-title"><span>01</span><div><strong>Informações</strong><small>O que o cliente verá no catálogo</small></div></div>
+        <input type="hidden" name="id">
+        <div class="field-grid">
+          <label class="full">Nome do produto<input name="name" type="text" placeholder="Ex.: Chaveiro com nome" required></label>
+          <label>Categoria<select name="category" id="categorySelect" required></select></label>
+          <label>Material<input name="material" type="text" placeholder="PLA, papel kraft, vinil, Tyvek..."></label>
+          <label>Preço unitário padrão<input name="price" type="number" min="0" step="0.01" inputmode="decimal" placeholder="1,50"></label>
+          <label>Preço por unidade — 50+ <span>opcional</span><input name="bulk50" type="number" min="0" step="0.01" inputmode="decimal" placeholder="1,10"></label>
+          <label>Preço por unidade — 100+ <span>opcional</span><input name="bulk100" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0,85"></label>
+          <label>Ilustração quando não houver foto <span>opcional</span><select name="shape"><option value="plaque">Peça geral</option><option value="ring">Chaveiro circular</option><option value="figure">Action figure</option><option value="stand">Suporte ou base</option><option value="gear">Peça técnica</option><option value="vase">Vaso</option></select><small class="field-help">Usada somente enquanto o produto ainda não possui fotos.</small></label>
+          <label class="full">Descrição<textarea name="description" rows="6" placeholder="Descreva o produto, dimensões e opções..." required></textarea></label>
+          <label class="full">Link externo do modelo 3D <span>opcional</span><input name="modelUrl" type="text" placeholder="https://..."></label>
+        </div>
+      </section>
+
+      <aside class="media-studio">
+        <div class="section-title"><span>02</span><div><strong>Fotos do produto</strong><small>Imagens reais ou ilustrativas do item</small></div></div>
+        <section class="photo-uploader">
+          <div><strong>Fotos da peça impressa</strong><p>Até 5 fotos. Elas têm prioridade no catálogo e são otimizadas automaticamente.</p></div>
+          <label class="upload-button">Adicionar fotos<input id="photoFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple></label>
+          <div class="photo-preview-list" id="photoPreviewList"></div>
+          <p class="media-status" id="photoStatus">Nenhuma foto adicionada.</p>
+        </section>
+
+        <input name="photosJson" type="hidden">
+        <input name="color" type="hidden" value="#34373c">
+        <input name="previewSprite" type="hidden"><input name="previewFrames" type="hidden"><input name="previewColumns" type="hidden"><input name="previewLabel" type="hidden">
+      </aside>
+
+      <div class="dialog-actions">
+        <button class="secondary-button" id="cancelEdit" type="button">Cancelar</button>
+        <button class="primary-button" type="submit">Salvar produto</button>
+      </div>
+    </form>
+  </dialog>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.min.js"></script>
+  <script src="supabase-config.js?v=31"></script>
+  <script src="site-settings.js?v=31"></script>
+  <script src="catalog-data.js?v=31"></script>
+  <script src="cloud-store.js?v=31"></script>
+  <script src="image-preview.js?v=31"></script>
+  <script src="admin.js?v=31"></script>
+</body>
+</html>

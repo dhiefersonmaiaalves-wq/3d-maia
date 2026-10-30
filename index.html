@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catálogo da 3D MAIA — impressão 3D, papelaria, eventos e produtos personalizados.">
+  <title>3D MAIA — 3D e Personalizados</title>
+  <link rel="icon" href="assets/logo-3d-maia-original.png">
+  <link rel="stylesheet" href="styles.css?v=27">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand brand-with-mark" href="#inicio" aria-label="3D MAIA — início">
+      <span class="brand-rule" aria-hidden="true"></span>
+      <span class="brand-wordmark"><span><b>3D</b> MAIA</span><small>3D e personalizados</small></span>
+    </a>
+    <nav aria-label="Navegação principal">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#orcamento">Orçamento</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> 3D e personalizados</p>
+        <h1>Sua ideia,<br>do seu <em>jeito.</em></h1>
+        <p class="hero-text">Impressão 3D, papelaria e personalizados para presentes, empresas, festas e projetos sob medida.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#catalogo">Ver catálogo</a>
+          <a class="button button-ghost" href="#orcamento">Enviar uma ideia</a>
+        </div>
+      </div>
+      <div class="brand-showcase" aria-label="Marca 3D MAIA">
+        <div class="showcase-grid" aria-hidden="true"></div>
+        <div class="logo-card">
+          <img data-site-logo src="assets/logo-3d-maia-original.png" alt="3D MAIA — Impressão 3D e personalizados">
+        </div>
+        <p><span>Identidade oficial</span> 3D, papelaria e personalizados</p>
+      </div>
+    </section>
+
+    <section class="manifesto" aria-label="Apresentação">
+      <p>Impressão 3D · Papelaria · Personalizados</p>
+      <strong>Sua ideia ganha forma, cor e personalidade.</strong>
+    </section>
+
+    <section class="catalog-section" id="catalogo">
+      <div class="catalog-watermark" aria-hidden="true"></div>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow dark"><span></span> Possibilidades</p>
+          <h2>Catálogo</h2>
+        </div>
+        <p>Escolha uma peça pronta para personalizar ou envie sua ideia. Cores, tamanho, nome e acabamento podem ser ajustados.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filtrar catálogo">
+        <button class="filter is-active" type="button" data-filter="todos">Todos</button>
+        <button class="filter" type="button" data-filter="chaveiros">Chaveiros</button>
+        <button class="filter" type="button" data-filter="personalizado">Personalizados</button>
+        <button class="filter" type="button" data-filter="marcapaginas">Marca-páginas</button>
+        <button class="filter" type="button" data-filter="letras">Nomes &amp; letras 3D</button>
+        <button class="filter" type="button" data-filter="figures">Action Figures</button>
+        <button class="filter" type="button" data-filter="airsoft">Airsoft</button>
+        <button class="filter" type="button" data-filter="casa">Casa &amp; organização</button>
+        <button class="filter" type="button" data-filter="decoracao">Decoração</button>
+        <button class="filter" type="button" data-filter="papelaria">Papelaria &amp; eventos</button>
+        <button class="filter" type="button" data-filter="empresarial">Kits empresariais</button>
+      </div>
+      <p class="catalog-notice" id="catalogNotice" hidden>Categoria destinada a maiores de 18 anos. Os exemplos permanecem discretos e não explícitos.</p>
+      <p class="pricing-note">Valores iniciais ilustrativos. O preço final pode variar conforme tamanho, material, acabamento e quantidade.</p>
+
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="process-section" id="processo">
+      <div class="process-intro">
+        <p class="eyebrow light"><span></span> Processo simples</p>
+        <h2>Da ideia ao produto.</h2>
+        <p>Conte o que você precisa. A proposta é analisada para definir formato, material, acabamento, quantidade e prazo.</p>
+      </div>
+      <ol class="steps">
+        <li><span>01</span><div><strong>Envie sua ideia</strong><p>Uma referência, foto, medida ou arquivo 3D.</p></div></li>
+        <li><span>02</span><div><strong>Receba a proposta</strong><p>Definição de material, cor, acabamento e valor.</p></div></li>
+        <li><span>03</span><div><strong>Acompanhe a produção</strong><p>O produto é preparado, produzido e revisado.</p></div></li>
+        <li><span>04</span><div><strong>Pronto para você</strong><p>Entrega ou retirada combinada após a finalização.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="quote-section" id="orcamento">
+      <div class="quote-copy">
+        <p class="eyebrow dark"><span></span> Projeto personalizado</p>
+        <h2>Não encontrou<br>o que procura?</h2>
+        <p>Descreva sua ideia e abra uma conversa diretamente com a 3D MAIA no WhatsApp.</p>
+      </div>
+      <form class="quote-form" id="ideaForm">
+        <label>Seu nome<input type="text" name="name" autocomplete="name" placeholder="Como podemos chamar você?" required></label>
+        <label>O que você deseja produzir?<textarea name="idea" rows="4" placeholder="Conte a ideia, medidas aproximadas e quantidade..." required></textarea></label>
+        <label class="file-label">Arquivo de referência <span>opcional</span><input type="file" name="reference" accept=".stl,.obj,.3mf,.step,.stp,.png,.jpg,.jpeg,.pdf"></label>
+        <button class="button button-dark" type="submit">Enviar ideia pelo WhatsApp</button>
+        <p class="form-note" id="formNote" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand brand-with-mark footer-brand">
+      <span class="brand-rule" aria-hidden="true"></span>
+      <span class="brand-wordmark"><span><b>3D</b> MAIA</span><small>3D e personalizados</small></span>
+    </div>
+    <p>3D, papelaria e personalizados feitos para a sua ideia.</p>
+    <div class="footer-links"><a href="#inicio">Voltar ao topo ↑</a></div>
+  </footer>
+
+  <dialog class="product-detail-dialog" id="productDetailDialog">
+    <button class="detail-close" id="closeProductDetail" type="button" aria-label="Fechar detalhes">×</button>
+    <div class="detail-layout">
+      <section class="detail-gallery" aria-label="Fotos do produto">
+        <div class="detail-main-photo" id="detailMainPhoto"></div>
+        <div class="detail-thumbnails" id="detailThumbnails" aria-label="Escolher foto"></div>
+        <p class="swipe-hint" id="swipeHint">Arraste a foto para o lado para navegar</p>
+      </section>
+      <section class="detail-info">
+        <div class="detail-info-scroll">
+          <p class="detail-category" id="detailCategory"></p>
+          <h2 id="detailName"></h2>
+          <p class="detail-description" id="detailDescription"></p>
+          <div class="detail-price-block">
+            <span>Preço por unidade</span>
+            <strong id="detailUnitPrice"></strong>
+          </div>
+          <div class="detail-tiers" id="detailTiers"></div>
+          <label class="detail-quantity">Quantidade
+            <div class="quantity-control">
+              <button id="quantityMinus" type="button" aria-label="Diminuir quantidade">−</button>
+              <input id="detailQuantity" type="number" min="1" max="10000" value="1" inputmode="numeric">
+              <button id="quantityPlus" type="button" aria-label="Aumentar quantidade">＋</button>
+            </div>
+          </label>
+        </div>
+        <div class="detail-order-footer">
+          <div class="detail-total"><span>Orçamento estimado</span><strong id="detailTotal"></strong></div>
+          <button class="button button-primary detail-whatsapp" id="detailWhatsApp" type="button">Pedir pelo WhatsApp</button>
+          <p class="detail-note" id="detailNote">O valor final pode variar conforme arte, tamanho e acabamento.</p>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.min.js"></script>
+  <script src="supabase-config.js?v=29"></script>
+  <script src="site-settings.js?v=29"></script>
+  <script src="catalog-data.js?v=29"></script>
+  <script src="cloud-store.js?v=29"></script>
+  <script src="script.js?v=29"></script>
+</body>
+</html>
