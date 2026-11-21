@@ -124,7 +124,8 @@
     { id: 61, name: "Kit Empresarial Completo", category: "empresarial", label: "Kits empresariais", material: "Papel + embalagem + peça 3D", price: null, color: "#34373c", shadow: "#4f3a73", shape: "plaque", photos: ["assets/catalog-sales/61-kit-empresarial-completo.jpg?v=13"], description: "Identidade aplicada em cartões, tags, adesivos, sacolas, caixas cartonadas e expositor com QR Code. Montagem personalizada para cada empresa." },
     { id: 62, name: "Kit Bebê e Mesversário", category: "personalizado", label: "Personalizados", material: "Papel + PLA", price: null, color: "#d7b8ef", shadow: "#f7f0e8", shape: "stand", photos: ["assets/catalog-sales/62-kit-bebe-mesversario.jpg?v=13"], description: "Conjunto para quarto, chá de bebê ou mesversário com inicial e nome 3D, tags, adesivos, marca-páginas e embalagens combinando." },
     { id: 63, name: "Sinete personalizado 3D", category: "personalizado", label: "Personalizados", material: "Resina / PLA de alta definição", price: null, color: "#34373c", shadow: "#f04400", shape: "stand", photos: ["assets/catalog-sales/63-sinete-personalizado.jpg?v=17"], description: "Sinete para lacre de cera com inicial, monograma, nome ou logotipo. Inclui cabo e matriz personalizada; a arte e o tamanho são confirmados antes da produção." },
-    { id: 64, name: "Chaveiro abridor de latinha com coração", category: "chaveiros", label: "Chaveiros", material: "PETG", price: null, color: "#f4557e", shadow: "#242424", shape: "ring", photos: ["assets/catalog-sales/64-chaveiro-abridor-latinha-coracao-real.png"], description: "Chaveiro abridor de latinha com ponta projetada para ajudar a levantar o lacre, decorado com coração em relevo. Produzido em PETG, é leve, resistente e fácil de carregar. Pode ser personalizado em diferentes combinações de cores para lembrancinhas, presentes ou uso diário." }
+    { id: 64, name: "Chaveiro abridor de latinha com coração", category: "chaveiros", label: "Chaveiros", material: "PETG", price: null, color: "#f4557e", shadow: "#242424", shape: "ring", photos: ["assets/catalog-sales/64-chaveiro-abridor-latinha-coracao-real.png"], description: "Chaveiro abridor de latinha com ponta projetada para ajudar a levantar o lacre, decorado com coração em relevo. Produzido em PETG, é leve, resistente e fácil de carregar. Pode ser personalizado em diferentes combinações de cores para lembrancinhas, presentes ou uso diário." },
+    { id: 65, name: "Vaso para suculenta em formato de gatinho", category: "decoracao", label: "Decoração", material: "PETG", price: null, color: "#f2f0f4", shadow: "#d9caba", shape: "vase", photos: ["assets/catalog-sales/65-vaso-gatinho-petg-principal.png", "assets/catalog-sales/65-vaso-gatinho-petg-real-1.png", "assets/catalog-sales/65-vaso-gatinho-petg-real-2.png"], description: "Vaso decorativo em formato de gatinho, produzido em PETG e ideal para suculentas e pequenas plantas. Disponível em diferentes tamanhos e cores sob consulta. A planta não acompanha o produto." }
   ];
 
   function withSymbolicPrices(products) {
@@ -171,7 +172,7 @@
   }
 
   function withoutRemovedCategories(products) {
-    const realProductIds = new Set([51, 64]);
+    const realProductIds = new Set([51, 64, 65]);
     return products.filter(product => realProductIds.has(Number(product.id)));
   }
 
