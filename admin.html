@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Painel local de administração do catálogo 3D MAIA.">
   <title>Painel admin — 3D MAIA</title>
-  <link rel="icon" href="assets/logo-3d-maia-original.png">
-  <link rel="stylesheet" href="admin.css?v=28">
+  <link rel="icon" href="assets/logo-3d-maia-symbol-v2.png">
+  <link rel="stylesheet" href="admin.css?v=32">
 </head>
 <body class="admin-locked">
   <main class="login-gate" id="loginGate">
     <form class="login-card" id="loginForm">
-      <span class="login-mark" aria-hidden="true">3D</span>
+      <img class="login-logo" data-site-logo src="assets/logo-3d-maia-v2.png" alt="3D MAIA">
       <p class="eyebrow">Área restrita</p>
       <h1>Painel 3D MAIA</h1>
       <p>Entre com seu usuário e senha para gerenciar produtos, imagens e preços.</p>
@@ -26,7 +26,7 @@
   <div id="adminApp" hidden>
   <header class="admin-header">
     <a class="brand" href="index.html">
-      <span class="brand-rule" aria-hidden="true"></span>
+      <img class="brand-symbol" src="assets/logo-3d-maia-symbol-v2.png" alt="">
       <span class="brand-wordmark"><strong><b>3D</b> MAIA</strong><small>Painel administrativo</small></span>
     </a>
     <div class="admin-header-actions"><a class="catalog-link" href="index.html" target="_blank" rel="noopener">Ver catálogo ↗</a><button class="logout-button" id="logoutButton" type="button">Sair</button></div>
@@ -95,7 +95,7 @@
     <form class="settings-form" id="siteSettingsForm">
       <div class="dialog-heading"><div><p class="eyebrow">Identidade e contato</p><h2>Configurações do site</h2><small>Altere a aparência e o WhatsApp sem mexer no código.</small></div><button class="close-button" id="closeSettings" type="button" aria-label="Fechar configurações">×</button></div>
       <div class="settings-preview">
-        <div class="settings-banner-preview" id="settingsBannerPreview"><img data-site-logo id="settingsLogoPreview" src="assets/logo-3d-maia-original.png" alt="Prévia da logo"></div>
+        <div class="settings-banner-preview" id="settingsBannerPreview"><img data-site-logo id="settingsLogoPreview" src="assets/logo-3d-maia-v2.png" alt="Prévia da logo"></div>
         <p>Pré-visualização da marca e do banner principal.</p>
       </div>
       <div class="settings-fields">
@@ -157,11 +157,11 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.105.0/dist/umd/supabase.min.js"></script>
-  <script src="supabase-config.js?v=31"></script>
-  <script src="site-settings.js?v=31"></script>
-  <script src="catalog-data.js?v=31"></script>
-  <script src="cloud-store.js?v=31"></script>
-  <script src="image-preview.js?v=31"></script>
-  <script src="admin.js?v=31"></script>
+  <script src="supabase-config.js?v=32"></script>
+  <script src="site-settings.js?v=32"></script>
+  <script src="catalog-data.js?v=32"></script>
+  <script src="cloud-store.js?v=32"></script>
+  <script src="image-preview.js?v=32"></script>
+  <script src="admin.js?v=32"></script>
 </body>
 </html>

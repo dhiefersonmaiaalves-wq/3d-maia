@@ -4,14 +4,17 @@
     primaryColor: "#df6b3f",
     secondaryColor: "#705d7d",
     whatsapp: "556992761192",
-    logo: "assets/logo-3d-maia-original.png",
+    logo: "assets/logo-3d-maia-v2.png",
+    icon: "assets/logo-3d-maia-symbol-v2.png",
     banner: ""
   };
 
   function load() {
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      return saved && typeof saved === "object" ? { ...defaults, ...saved } : { ...defaults };
+      const settings = saved && typeof saved === "object" ? { ...defaults, ...saved } : { ...defaults };
+      if (settings.logo === "assets/logo-3d-maia-original.png") settings.logo = defaults.logo;
+      return settings;
     } catch {
       return { ...defaults };
     }
@@ -49,7 +52,7 @@
     root.style.setProperty("--violet", settings.secondaryColor);
     document.querySelectorAll("[data-site-logo]").forEach(image => { image.src = settings.logo || defaults.logo; });
     const icon = document.querySelector('link[rel="icon"]');
-    if (icon) icon.href = settings.logo || defaults.logo;
+    if (icon) icon.href = settings.icon || defaults.icon;
     document.querySelectorAll(".catalog-watermark,.admin-watermark").forEach(element => { element.style.backgroundImage = `url("${settings.logo || defaults.logo}")`; });
     const hero = document.querySelector(".hero");
     if (hero) {
