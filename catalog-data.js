@@ -171,7 +171,8 @@
   }
 
   function withoutRemovedCategories(products) {
-    return products.filter(product => !["adulto", "games", "automotivo"].includes(product.category));
+    const realProductIds = new Set([51, 64]);
+    return products.filter(product => realProductIds.has(Number(product.id)));
   }
 
   function load() {

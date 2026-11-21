@@ -75,7 +75,8 @@ function bulkHint(product) {
 }
 
 function renderFilters(active = "todos") {
-  const categories = CatalogStore.loadCategories();
+  const categoriesInUse = new Set(products.map(product => product.category));
+  const categories = CatalogStore.loadCategories().filter(category => categoriesInUse.has(category.value));
   const validActive = active === "todos" || categories.some(category => category.value === active) ? active : "todos";
   document.querySelector(".filters").innerHTML = [`<button class="filter ${validActive === "todos" ? "is-active" : ""}" type="button" data-filter="todos">Todos</button>`, ...categories.map(category => `<button class="filter ${validActive === category.value ? "is-active" : ""}" type="button" data-filter="${escapeHTML(category.value)}">${escapeHTML(category.label)}</button>`)].join("");
   return validActive;
